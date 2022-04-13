@@ -9,26 +9,38 @@ let savedList = []
 
 //Save Movie to LocalStorage
 function saveMovie(movie){
-            savedList = localStorage.getItem('movies');
-            savedList = JSON.parse(savedList);
-            savedList.push(movie);
-            localStorage.setItem('movies', JSON.stringify(savedList));
-    }
+            if(localStorage.getItem('movies')){
+                savedList = localStorage.getItem('movies');
+                savedList = JSON.parse(savedList);
+                savedList.push(movie);
+                localStorage.setItem('movies', JSON.stringify(savedList));
+            } else {
+                savedList.push(movie);
+                localStorage.setItem('movies', JSON.stringify(savedList));
+            }      
+}
+
 //Save searched Movies imdbID to Array searchArray
-btn.addEventListener("click", async () => {
-    document.getElementById("content").innerHTML = ""
-    loader.classList.remove("hidden")
-    setTimeout(() => {
-        loader.classList.add = "hidden"
-    }, 2000)
-    const response = await fetch(`https://www.omdbapi.com/?apikey=378360d0&s=${search.value}&r=json&type=movie&plot=full`)
-    const data = await response.json()  
-            searchArray = []
-            for(let i = 0; i < data.Search.length; i++) {
-                searchArray.push(data.Search[i].imdbID)
-            }
-            showData()
-})
+btn.addEventListener("click", function () {
+        document.getElementById("content").innerHTML = ""
+        loader.classList.remove("hidden")
+        setTimeout(() => {
+            loader.classList.add = "hidden"
+        }, 2000)
+
+        fetch(`https://www.omdbapi.com/?apikey=378360d0&s=${search.value}&r=json&type=movie&plot=full`)
+
+            .then(response => response.json())
+            .then(data => {
+                searchArray = []
+                for (let i = 0; i < data.Search.length; i++) {
+                    searchArray.push(data.Search[i].imdbID)
+                }
+                showData()
+            })
+
+
+    })
 //Display all the Movies from the saved Movie Array
 const showData = async () => {
     document.getElementById("content").innerHTML = ""

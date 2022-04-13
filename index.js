@@ -21,7 +21,7 @@ btn.addEventListener("click", async () => {
     setTimeout(() => {
         loader.classList.add = "hidden"
     }, 2000)
-    const response = await fetch(`http://www.omdbapi.com/?apikey=378360d0&s=${search.value}&r=json&type=movie&plot=full`)
+    const response = await fetch(`https://www.omdbapi.com/?apikey=378360d0&s=${search.value}&r=json&type=movie&plot=full`)
     const data = await response.json()  
             searchArray = []
             for(let i = 0; i < data.Search.length; i++) {
@@ -33,7 +33,7 @@ btn.addEventListener("click", async () => {
 const showData = async () => {
     document.getElementById("content").innerHTML = ""
     searchArray.map((item) => {
-        fetch(`http://www.omdbapi.com/?apikey=378360d0&i=${item}`)
+        fetch(`https://www.omdbapi.com/?apikey=378360d0&i=${item}`)
         .then(res => res.json())
         .then(data => {
             let currentID = data.imdbID
@@ -59,7 +59,7 @@ function renderWatchlist() {
     array = JSON.parse(array);
     document.getElementById("watchlist").innerHTML = ""
     array.map((item) => {
-        fetch(`http://www.omdbapi.com/?apikey=378360d0&i=${item}`)
+        fetch(`https://www.omdbapi.com/?apikey=378360d0&i=${item}`)
         .then(res => res.json())
         .then(data => {
             document.getElementById("watchlist").innerHTML += `

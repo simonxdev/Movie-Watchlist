@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link href="output.css" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body onload="renderWatchlist()">
+        <header class="w-full">
+            <div class="container h-96 mt-10 mx-auto bg-hero relative bg-blend-overlay bg-black/50 rounded-tl-xl rounded-tr-xl">
+                <div class="text-white font-bold text-8xl w-5/6 absolute bottom-32 left-28">My Watchlist</div>
+                <div onclick="window.location='index.html'" class="text-white font-bold text-2xl w-1/6 absolute bottom-3 right-1 cursor-pointer font-"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white mr-2 float-left mt-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>Search Movies</div>
+            </div>
+        </header>
+        <content class="container mx-auto h-auto flex items-stretch flex-col relative bg-zinc-900 rounded-bl-xl rounded-br-xl mb-10">
+            <div id="watchlist" class="pt-5 pb-5">
+                <div>
+                <img src="Group 199.svg" class="w-64 mx-auto mt-60 mb-60">
+                </div>
+                <div id="loader" class="loader mx-auto mt-60 mb-60 hidden"></div>
+            </div>
+        </content>
+        <script src="index.js"></script>
+    </body>
+</html>
